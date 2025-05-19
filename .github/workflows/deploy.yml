@@ -8,15 +8,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    - name: Install kubectl
-    run: |
-      curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-      chmod +x kubectl
-      sudo mv kubectl /usr/local/bin/
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
