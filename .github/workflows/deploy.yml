@@ -28,7 +28,7 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/nginx-app:latest
 
-      - name: Update kubeconfig
+      - name: Update kubeconfig 
         run: |
           aws eks update-kubeconfig --name eksdemo --region us-east-2
       - name: Deploy to EKS
